@@ -14,8 +14,8 @@ var express 		= require("express"),
 var commentRoutes = require("./routes/comments"),
 	campgroundRoutes = require("./routes/campgrounds"),
 	authRoutes =require("./routes/index");
-
-mongoose.connect(process.env.DATABASEURL, {
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v9";
+mongoose.connect(url, {
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(()=>{
