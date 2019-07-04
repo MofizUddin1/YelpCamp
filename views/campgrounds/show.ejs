@@ -1,0 +1,88 @@
+<% include ../partials/header %>
+<div class="row justify-content-center m-2">
+	<div class="col-lg-8 col-sm-9 col-12 p-0 mx-2">
+		<div class="card border rounded ">
+			<div class="hover-image">
+				<img src="<%= campground.image %>" class="card-img-top " alt="...">
+				<%if(currentUser && campground.author.id.equals(currentUser._id)){%>
+				<div class="hover-item overlay">
+					<div class="campground-buttons inline-block">
+						<form class="inline-block m-0" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+							<button class="btn btn-danger inline-block m-0"><i class="fas fa-trash"></i></button>
+						</form>
+						<a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-dark inline-block m-0"><i class="fas fa-edit"></i></a>
+
+					</div>
+					</div>
+					
+				<%}%>
+			</div>
+				
+			
+			
+			<div class="card-body p-2 m-1">
+				<h3 class=" d-flex justify-content-start "><a href="#"><%=campground.name%></a></h3>
+				<p class="">
+					<%= campground.description %>
+				</p>
+				<p class="d-flex justify-content-end mr-2">
+					<em>Submitted by: <%= campground.author.username %></em>
+				</p>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!-- <hr class="style-two"> -->
+<div class="row justify-content-center m-2">
+	<div class="col-lg-8 col-sm-9 col-12 p-0">
+		<div class="card card-body bg-light rounded">
+			<div class="d-flex ml-auto">
+				<a class="btn btn-dark mb-3" href="/campgrounds/<%=campground._id%>/comments/new">Leave Review</a>
+			</div>
+			<% campground.comments.forEach((comment)=>{ %>
+			<div class="row">
+				<div class="col-12">
+					<div class="card p-3 m-2 bg-white">
+							<strong><%= comment.author.username %></strong>
+						<hr>
+						<div class="review-content-header">10 days ago</div>
+						<p class="d-flex mb-2">
+							<%= comment.text %>
+						</p>
+						<%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+						<div class="">
+							
+							<a class= "btn btn-sm btn-dark inline-block" 
+							   href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit"><i class="fas fa-edit"></i>
+							</a>
+							<form class="inline-block" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+								<button class= "btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+							</form>
+						</div>
+						<%}%>
+					</div>
+				
+				</div>
+			</div>
+			
+
+			<%});%>
+		
+		</div>
+	</div>
+
+</div>
+<%
+// function hover() {
+//   var x = document.getElementById("edit-btn");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//   } else {
+//     x.style.display = "none";
+//   }
+// }
+%>
+	
+
+<% include ../partials/footer %>

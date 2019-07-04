@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+
+<div class="row d-flex justify-content-center">
+	<div class="form-card white-panel">
+		<div class="pb-2">
+			<h5 class="text-center">Create New Campground</h5>
+			<hr>
+		</div>
+		<div class="">	
+			<form class="p-6" action="/campgrounds" method="POST">
+				<input class="form-control m-1" type="text" name="name" placeholder="name">
+				<input class="form-control m-1"type="text" name="image" placeholder="image">
+				<input class="form-control m-1"type="text" name="description" placeholder="description">
+				<input class="brn btn-primary btn-block m-1" type="submit">
+			</form>
+		</div>	
+	</div>
+</div>
+
+<% include ../partials/footer %>
