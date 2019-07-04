@@ -16,7 +16,8 @@ var commentRoutes = require("./routes/comments"),
 	authRoutes =require("./routes/index");
 
 // mongoose.connect("mongodb://localhost/yelp_camp_v9", {useNewUrlParser: true});
-mongoose.connect("mongodb+srv://yelpmo:cakebox@yelpcamp-mqm3w.mongodb.net/test?retryWrites=true&w=majority", {
+//mongoose.connect("mongodb+srv://yelpmo:cakebox@yelpcamp-mqm3w.mongodb.net/test?retryWrites=true&w=majority"
+mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(()=>{
