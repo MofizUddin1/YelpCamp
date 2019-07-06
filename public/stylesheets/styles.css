@@ -55,6 +55,7 @@
 	margin-left: auto;
     position:absolute; 
 	right:25px;
+	border-radius:1px;
 }
 .overlay{
 	display: inline-block;
@@ -68,6 +69,31 @@
   height: 0;
   transition: .5s ease;
 }
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color:rgba(185, 185, 185, 0.6);
+}
+
+.fade-overlay-image:hover .fade-overlay {
+  opacity: 1;
+}
+.overlay-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
 .campground-buttons{
   position: absolute;
   top:3;
@@ -80,12 +106,14 @@
 	display:none;
 	height:45px;
 	}
-.hover-image:hover .hover-item{
-	visibility: visible;
-	opacity:1;
+.hover-image{
+	transition: .5s ease;
 }
 .hover-image:hover .overlay{
-	height: 38px;
+	height: 39px;
+}
+.hover-image:hover{
+	padding-top: 39px;
 }
 .hover-image:hover .comment-buttons{
 	display:inline-block;
@@ -145,11 +173,18 @@ ul.rate-area{
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+.fas.fa-ellipsis-v{
+	padding:10px;
+	border-radius: 25px;
+	color:#343a40 !important;
+}
 .fa-ellipsis-v:hover{
-	opacity:0.8;
+	font-size:1.1em;
+	
 }
 .fa-ellipsis-v:active{
 	opacity: 1;
+	background-color: rgba(211,211,211,0.2);
 }
 .fa-campground{
 	color: brown;
@@ -165,6 +200,18 @@ ul.rate-area{
 }
 .btn-white.review-button{
 	font-weight:bold;
+}
+.btn-bar{
+	border: 1px solid white;
+	border-radius: 1px;
+	width:250px;
+	background-color:#343a40;
+	color: white;
+	
+}
+.btn-bar:hover{
+	background-color: rgba(255, 255, 255, 0);
+	border: 2px solid #343a40;
 }
 @media screen and (max-width: 766px) {
 	.img{

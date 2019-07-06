@@ -8,8 +8,7 @@ var express 		= require("express"),
 	LocalStrategy 	= require("passport-local"),
 	User			= require("./models/user"),
 	methodOverride 	= require("method-override"),
-	flash			= require("connect-flash"),
-	seedDB			=require("./seeds.js");
+	flash			= require("connect-flash");
 //requiring routes
 var commentRoutes = require("./routes/comments"),
 	campgroundRoutes = require("./routes/campgrounds"),
@@ -40,7 +39,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 //user.authenticate comes from passport-local-mongoose. if we didnt require it, we will need to write our own
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-//seedDB();
 app.use((req,res,next)=>{
 	//provides access to every template
 	res.locals.currentUser = req.user;

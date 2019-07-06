@@ -2,23 +2,26 @@
 <div class="row justify-content-center m-2">
 	<div class="col-lg-8 col-sm-9 col-12 p-0 mx-2">
 		<div class="card border rounded ">
+			<%if(currentUser && campground.author.id.equals(currentUser._id)){%>
 			<div class="hover-image">
+			<%}else{ %>
+			<div><%}%>
 				<img src="<%= campground.image %>" class="card-img-top " alt="...">
 				<%if(currentUser && campground.author.id.equals(currentUser._id)){%>
 				<div class="hover-item overlay inline-block">
 					<div class="d-flex justify-content-start">
-						<a class="btn btn-dark m-0" href="/campgrounds/<%= campground._id %>/edit" ><i class="fas fa-edit"></i> EDIT</a>
+						<a class="btn btn-bar m-0" href="/campgrounds/<%= campground._id %>/edit" ><i class="fas fa-edit mr-1"></i> EDIT CAMPGROUND</a>
 						<form class=" m-0 inline-block" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
-							<button class="btn btn-danger m-0"><i class="fas fa-trash"></i> DELETE</button>
+							<button class="btn btn-bar m-0"><i class="fas fa-trash mr-1"></i>  DELETE CAMPGROUND</button>
 						</form>
 					</div>
 				</div>
 				<%}%>
 			</div>
 			<div class="card-body p-2 m-1">
-				<h3 class=" d-flex justify-content-start "><a href="#"><%=campground.name%></a></h3>
+				<h3 class=" d-flex justify-content-start "><a data-toggle="tooltip" title="View Location on Google Maps" href="https://www.google.co.uk/maps/place/<%=campground.name%>,+London/"><%=campground.name%></a></h3>
 				<p class="">
-					<%= campground.description %>
+					<%- paragraphs(campground.description) %>
 				</p>
 				<p class="d-flex justify-content-end mr-2">
 					<em>Submitted by: <%= campground.author.username %></em>
@@ -52,7 +55,7 @@
 							</div>
 						</p>
 						<p class="d-flex mb-2">
-							<%= comment.text %>
+							<%- paragraphs(comment.text) %>
 						</p>
 						<%if(currentUser && comment.author.id.equals(currentUser._id)){%>
 						<div class="ml-auto d-flex">
@@ -111,6 +114,10 @@ function getTimeString(date){
 		}else{
 			return number + " " + word + " ago";
 		}
+	}
+	function paragraphs(text){
+		return text.replace(/\r?\n/g, '<br />');
+		
 	}
 %>
 	
