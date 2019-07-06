@@ -5,21 +5,16 @@
 			<div class="hover-image">
 				<img src="<%= campground.image %>" class="card-img-top " alt="...">
 				<%if(currentUser && campground.author.id.equals(currentUser._id)){%>
-				<div class="hover-item overlay">
-					<div class="campground-buttons inline-block">
-						<form class="inline-block m-0" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
-							<button class="btn btn-danger inline-block m-0"><i class="fas fa-trash"></i></button>
+				<div class="hover-item overlay inline-block">
+					<div class="d-flex justify-content-start">
+						<a class="btn btn-dark m-0" href="/campgrounds/<%= campground._id %>/edit" ><i class="fas fa-edit"></i> EDIT</a>
+						<form class=" m-0 inline-block" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+							<button class="btn btn-danger m-0"><i class="fas fa-trash"></i> DELETE</button>
 						</form>
-						<a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-dark inline-block m-0"><i class="fas fa-edit"></i></a>
-
 					</div>
-					</div>
-					
+				</div>
 				<%}%>
 			</div>
-				
-			
-			
 			<div class="card-body p-2 m-1">
 				<h3 class=" d-flex justify-content-start "><a href="#"><%=campground.name%></a></h3>
 				<p class="">
@@ -30,58 +25,93 @@
 				</p>
 			</div>
 		</div>
-		
 	</div>
 </div>
-<!-- <hr class="style-two"> -->
 <div class="row justify-content-center m-2">
 	<div class="col-lg-8 col-sm-9 col-12 p-0">
 		<div class="card card-body bg-light rounded">
 			<div class="d-flex ml-auto">
-				<a class="btn btn-dark mb-3" href="/campgrounds/<%=campground._id%>/comments/new">Leave Review</a>
+			<a class="btn btn-white review-button mb-3" href="/campgrounds/<%=campground._id%>/comments/new">Leave Review</a>
 			</div>
 			<% campground.comments.forEach((comment)=>{ %>
 			<div class="row">
 				<div class="col-12">
 					<div class="card p-3 m-2 bg-white">
-							<strong><%= comment.author.username %></strong>
-						<hr>
-						<div class="review-content-header">10 days ago</div>
+						<strong><%= comment.author.username %></strong>
+						<hr class="underspace">
+						<div class="review-content-header"><%= getTimeString(comment.createdAt) %></div>
+						<p class="d-flex mb-2">
+							<div>
+								<%for(var i =0; i<5; i++){
+									if(i<comment.rating){%>
+										<span class="fa fa-star checked"></span>
+									<%}else{%>
+										<span class="fa fa-star"></span>
+								<%	}
+								}%>
+							</div>
+						</p>
 						<p class="d-flex mb-2">
 							<%= comment.text %>
 						</p>
 						<%if(currentUser && comment.author.id.equals(currentUser._id)){%>
-						<div class="">
-							
-							<a class= "btn btn-sm btn-dark inline-block" 
-							   href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit"><i class="fas fa-edit"></i>
-							</a>
-							<form class="inline-block" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-								<button class= "btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+						<div class="ml-auto d-flex">
+							<div class="dropdown">
+								<a class="fas fa-ellipsis-v" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class= "btn btn-sm btn-block btn-white" 
+							href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit"><i class="fas fa-edit"></i>EDIT</a>
+							<form class="" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+							<button class= "btn btn-sm btn-block btn-white"><i class="fas fa-trash"></i> DELETE</button>  
 							</form>
 						</div>
 						<%}%>
 					</div>
-				
 				</div>
 			</div>
-			
-
 			<%});%>
-		
 		</div>
 	</div>
-
 </div>
 <%
-// function hover() {
-//   var x = document.getElementById("edit-btn");
-//   if (x.style.display === "none") {
-//     x.style.display = "block";
-//   } else {
-//     x.style.display = "none";
-//   }
-// }
+function getTimeString(date){
+	var d = new Date();
+ 	var n = d.getTime();
+	var ms = n-date;
+	
+	if(ms<3.6e+6){
+		var min = Math.round(ms/60000);
+		return getPluralisedTime(min, "minute");
+	}
+	if(ms<8.64e+7){
+		var hour = Math.round(ms/3.6e+6);
+		return getPluralisedTime(hour, "hour");
+	}
+	if(ms<6.048e+8){
+		var day = Math.round(ms/8.64e+7);
+		return getPluralisedTime(day, "day");
+	}
+	if(ms<2.628e+9){
+		var week = Math.round(ms/8.64e+7);
+		return getPluralisedTime(week, "week");
+	}
+	if(ms<3.154e+10){
+		var month = Math.round(ms/2.628e+9);
+		return getPluralisedTime(month, "month");
+	}
+	if(ms<3.154e+10){
+		var year = Math.round(ms/3.154e+10);
+		return getPluralisedTime(year, "year");
+	}
+	return "Now";
+}
+	function getPluralisedTime(number, word){
+		if(number>1){
+			return number + " " + word + "s ago";
+		}else{
+			return number + " " + word + " ago";
+		}
+	}
 %>
 	
 

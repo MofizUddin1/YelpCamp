@@ -1,7 +1,30 @@
 <% include ../partials/header %>
-
-
 <div class="row d-flex justify-content-center">
+	<div class="white-panel">
+		<div class="d-flex pb-4">
+			<h5 class="text-center">Edit Reveiw</h5>
+		</div>
+		<form class="p-6" action="/campgrounds/<%=campground_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
+			<div class="border-1 p-2">	
+				<ul class="rate-area">
+						<input type="radio" id="5-star" name="comment[rating]" value="5" /><label for="5-star" title="Amazing">5 stars</label>
+						<input type="radio" id="4-star" name="comment[rating]" value="4" /><label for="4-star" title="Good">4 stars</label>
+						<input type="radio" id="3-star" name="comment[rating]" value="3" /><label for="3-star" title="Average">3 stars</label>
+						<input type="radio" id="2-star" name="comment[rating]" value="2" /><label for="2-star" title="Not Good">2 stars</label>
+						<input type="radio" id="1-star" name="comment[rating]" value="1" /><label for="1-star" title="Bad" checked>1 star</label>
+				</ul>
+				<textarea class="form-control m-1 resized-text" name="comment[text]" placeholder="Leave your review here...." cols="35" rows="10" ><%=comment.text%></textarea>
+				<!-- <input  type="text" >
+				<span>Rating:</span> -->
+			</div>
+			<input class="brn btn-primary btn-block m-1 mt-4" type="submit">
+		</form>
+		<a href="/campgrounds/<%=campground_id%>">Back</a>	
+			
+	</div>
+</div>
+
+<!-- <div class="row d-flex justify-content-center">
 	<div class="form-card white-panel">
 		<div class="d-flex pb-2">
 			<h5 class="text-center">Edit Comment</h5>
@@ -14,6 +37,6 @@
 			<a href="/campgrounds/<%=campground_id%>">Back</a>	
 		</div>
 	</div>
-</div>
+</div> -->
 
 <% include ../partials/footer %>

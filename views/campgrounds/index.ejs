@@ -4,7 +4,7 @@
 	<header class="jumbotron px-5 mt-2; sm-px-auto">
 		<h1>Welcome to YelpCamp</h1>
 		<p>
-			Welcome to the YelpCamp Site. View Camp sites from across London
+			Welcome To The YelpCamp Site. Reviews for Campgrounds Across London.
 		</p>
 		<p>
 			<a class="btn btn-dark p-3" href="/campgrounds/new">Add New Campground</a>
@@ -13,11 +13,11 @@
 	<div class="row justify-content-around p-0 ">
 		<%campgrounds.forEach((campground)=>{%>
 			<div class="col-md-6 col-lg-4 col-12 my-1">
-				<div class="card">
-				  	<img src=<%= campground.image %> class="card-img-top img border-3" alt="...">
+				<div class="card border-1">
+				  	<img src="<%= campground.image %>" class="card-img-top img" alt="...">
 					<div class="card-body p-0 m-1 text-center">
-						<h5 class=" d-flex py-1 justify-content-center"><%=campground.name%></h5>
-						<a href="/campgrounds/<%= campground._id %>" class="btn btn-dark">More Info</a>
+						<h5 class=" d-flex py-1 justify-content-center"><a href="/campgrounds/<%= campground._id %>"><%=campground.name%></a></h5>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-white btn-block">More Info</a>
 					</div>
 				</div>
 			</div>
