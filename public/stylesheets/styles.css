@@ -1,6 +1,7 @@
 html, body {
     height:100%;
 }
+
 #main {
     padding-bottom: 216px;
 }
@@ -18,6 +19,12 @@ html, body {
 .footer-copyright{
 	background-color:#2a3036;
 	color: white;
+}
+.clearfix{
+	background-color:#343a40;
+	margin: 0;
+	padding-top:16px;
+	padding-bottom:16px;
 }
 .img{
 	position: relative;
