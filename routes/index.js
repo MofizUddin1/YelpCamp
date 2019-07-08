@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var middleware = require("../middleware/index.js");
 //root route
 router.get("/",(req,res)=>{
 	res.render("landing");
@@ -11,7 +12,7 @@ router.get("/register",(req,res)=>{
 	res.render("register");
 });
 //sign up logic route
-router.post("/register",(req,res)=>{
+router.post("/register", middleware.isIdentical,(req,res)=>{
 	var newUser =  new User({username: req.body.username});
 	User.register(newUser,req.body.password, (err,user)=>{
 		if (err){

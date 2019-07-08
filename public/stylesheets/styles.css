@@ -79,7 +79,7 @@
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color:rgba(185, 185, 185, 0.6);
+  background-color:rgba(185, 185, 185, 0.3);
 }
 
 .fade-overlay-image:hover .fade-overlay {
