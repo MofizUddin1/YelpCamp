@@ -219,7 +219,7 @@ ul.rate-area{
 	min-height: 400px;
 	}
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
 	.img{
 	max-height: 200px;
 	min-height: 200px;
