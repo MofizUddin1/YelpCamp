@@ -1,14 +1,13 @@
 <% include ../partials/header %>
-
-
 <div class="row d-flex justify-content-center">
-	<div class="white-panel">
-		<div class="d-flex pb-4">
+	<div class="white-panel col-11 col-sm-9 col-md-8 col-lg-6 col-xl-4">
+		<div class="pb-2 justify-content-center">
 			<h5 class="text-center">Add Review For  <%= campground.name%></h5>
+			<hr class="white-hr">
 		</div>
 		
 		<form class="p-6" action="/campgrounds/<%=campground._id%>/comments" method="POST">
-			<div class="border-1 p-2">	
+			<div class="review-area p-2">	
 				<ul class="rate-area">
 						<input type="radio" id="5-star" name="comment[rating]" value="5" /><label for="5-star" title="Amazing">5 stars</label>
 						<input type="radio" id="4-star" name="comment[rating]" value="4" /><label for="4-star" title="Good">4 stars</label>
@@ -23,8 +22,6 @@
 			<input class="brn btn-primary btn-block m-1 mt-4" type="submit">
 		</form>
 		<a href="/campgrounds">Back</a>
-			
 	</div>
 </div>
-
 <% include ../partials/footer %>
