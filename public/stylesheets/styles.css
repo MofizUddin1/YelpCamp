@@ -271,8 +271,7 @@ ul.rate-area{
 }
 @media screen and (max-width: 400px) {
 	.img{
-	max-height: 200px;
-	min-height: 200px;
+	height: auto;
 	}
 	.hide{
 		display:none;
