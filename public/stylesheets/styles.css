@@ -286,5 +286,8 @@ ul.rate-area{
 	.show{
 		display: inline;
 	}
+	.card{
+		padding:0 !important;
+	}
 	
 }
