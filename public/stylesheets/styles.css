@@ -268,4 +268,7 @@ ul.rate-area{
 	max-height: 200px;
 	min-height: 200px;
 	}
+	.hide{
+		display:none;
+	}
 }

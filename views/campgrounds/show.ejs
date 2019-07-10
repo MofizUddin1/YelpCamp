@@ -10,9 +10,9 @@
 				<%if(currentUser && campground.author.id.equals(currentUser._id)){%>
 				<div class="hover-item overlay inline-block">
 					<div class="d-flex justify-content-start">
-						<a class="btn btn-bar m-0" href="/campgrounds/<%= campground._id %>/edit" ><i class="fas fa-edit mr-1"></i> EDIT CAMPGROUND</a>
+						<a class="btn btn-bar m-0" href="/campgrounds/<%= campground._id %>/edit" ><i class="fas fa-edit mr-1"></i> EDIT <span class="hide">CAMPGROUND</span></a>
 						<form class=" m-0 inline-block" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
-							<button class="btn btn-bar m-0"><i class="fas fa-trash mr-1"></i>  DELETE CAMPGROUND</button>
+							<button class="btn btn-bar m-0"><i class="fas fa-trash mr-1"></i>  DELETE <span class="hide">CAMPGROUND</span></button>
 						</form>
 					</div>
 				</div>
