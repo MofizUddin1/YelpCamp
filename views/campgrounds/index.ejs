@@ -19,7 +19,7 @@
 						<a class="overlay-link btn btn-dark" href="/campgrounds/<%= campground._id %>">More Info</a>
 					</div>
 					<div class="card-body p-0 m-1 text-center">
-						<h5 class=" d-flex py-1 justify-content-center"><%=campground.name%></h5>
+						<h5 class=" d-flex py-1 justify-content-center"><span class="hide"><%=campground.name%></span><a class="show" href="/campgrounds/<%= campground._id %>"><%=campground.name%></a></h5>
 					
 					</div>
 				</div>

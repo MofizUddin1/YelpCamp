@@ -255,13 +255,19 @@ ul.rate-area{
 	background-color: rgba(255, 255, 255, 0);
 	border: 2px solid #343a40;
 }
-
+.show{
+	display:none;
+}
 
 @media screen and (max-width: 766px) {
 	.img{
 	max-height: 400px;
 	min-height: 400px;
 	}
+	.footer-copyright{
+		position:relative;
+	}
+	
 }
 @media screen and (max-width: 400px) {
 	.img{
@@ -271,4 +277,14 @@ ul.rate-area{
 	.hide{
 		display:none;
 	}
+	.overlay-link{
+		display: none;
+	}
+	.fade-overlay{
+		display: none;
+	}
+	.show{
+		display: inline;
+	}
+	
 }
